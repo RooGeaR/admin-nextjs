@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './sidebar.module.css'
-import { IconType } from "react-icons";
+import { MenuItem, Item } from '@/app/types/menuItem'
 import {
   MdDashboard,
   MdSupervisedUserCircle,
@@ -15,7 +15,7 @@ import {
 import MenuLink from './menuLink/menuLink';
 
 
-const menuItems = [
+const menuItems: MenuItem[] = [
   {
   title: "Pages",
   list: [
@@ -84,7 +84,7 @@ const Sidebar = () => {
         {menuItems.map((cat) => (
           <li key={cat.title}>
             <span>{cat.title}</span>
-            {cat.list.map((item) => (
+            {cat.list.map((item: Item) => (
               <MenuLink item={item} key={item.title}/>
             ))}
           </li>

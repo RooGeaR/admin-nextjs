@@ -1,11 +1,16 @@
+'use client'
+
 import React from 'react'
 import styles from './menuLink.module.css'
 import { Item } from '@/app/types/menuItem'
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const MenuLink = ({ item }: { item: Item}) => {
+
+  const pathname = usePathname()
   return (
-    <Link href={item.path} className={styles.container}>
+    <Link href={item.path} className={`${styles.container} ${pathname === item.path && styles.active}`}>
       {item.icon}
       {item.title}
     </Link>

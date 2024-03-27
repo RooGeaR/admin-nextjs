@@ -1,6 +1,7 @@
 :root {
   --bg: #151c2c;
   --bgSoft: #182237;
+  --bgSoftHover: #2e374e;
   --text: white;
   --textSoft: #b7bac1;
 }

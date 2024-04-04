@@ -1,5 +1,6 @@
 import styles from "@/app/ui/dashboard/products/singleProduct/singleProduct.module.css";
 import Image from "next/image";
+import Button from "@/app/ui/button/button";
 
 const SingleProductPage = () => {
   return (
@@ -15,10 +16,10 @@ const SingleProductPage = () => {
           <label htmlFor="">Title</label>
           <input type="text" name="title" placeholder="IPhone" />
           <label htmlFor="">Category</label>
-          <select name="cat" id="cat">
+          <select name="cat" id="cat" defaultValue={"phone"}>
             <option value="general">Choose a category</option>
             <option value="kitchen">Kitchen</option>
-            <option value="phone" selected>Phone</option>
+            <option value="phone">Phone</option>
             <option value="computer">Computer</option>
           </select>
           <label htmlFor="">Price</label>
@@ -36,7 +37,7 @@ const SingleProductPage = () => {
             rows={16}
             placeholder="IPhone 10 color white"
           ></textarea>
-          <button type="submit">Update</button>
+          <Button title="Update" type="submit" style={{ marginTop: "20px" }} />
         </form>
       </div>
     </div>

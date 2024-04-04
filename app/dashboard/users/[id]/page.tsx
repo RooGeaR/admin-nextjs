@@ -1,3 +1,4 @@
+import Button from "@/app/ui/button/button";
 import styles from "@/app/ui/dashboard/users/singleUser/singleUser.module.css";
 import Image from "next/image";
 
@@ -32,7 +33,7 @@ const SingleUserPage = () => {
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
-          <button type="submit">Update</button>
+          <Button title="Update" type="submit" style={{marginTop: '20px'}}/>
         </form>
       </div>
     </div>

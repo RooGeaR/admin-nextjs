@@ -1,3 +1,4 @@
+import Button from "@/app/ui/button/button";
 import styles from "@/app/ui/dashboard/products/addProduct/addProduct.module.css";
 const AddProductPage = () => {
   return (
@@ -20,7 +21,7 @@ const AddProductPage = () => {
           rows={16}
           placeholder="Description"
         ></textarea>
-        <button type="submit">Subtmit</button>
+        <Button title="Add" type="submit" style={{padding: '30px'}}/>
       </form>
     </div>
   );

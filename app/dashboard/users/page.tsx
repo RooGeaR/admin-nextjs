@@ -5,8 +5,13 @@ import styles from '@/app/ui/dashboard/users/users.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const UsersPage = async () => {
-  const users = await fetchUsers();
+interface IUsersPage {
+  searchParams: { q: string }
+}
+
+const UsersPage = async ({ searchParams }: IUsersPage) => {
+  const q = searchParams?.q || ''
+  const users = await fetchUsers(q);
   return (
     <div className={styles.container}>
       <div className={styles.top}>

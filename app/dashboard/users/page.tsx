@@ -6,12 +6,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 interface IUsersPage {
-  searchParams: { q: string }
+  searchParams: { q: string, page: string }
 }
 
 const UsersPage = async ({ searchParams }: IUsersPage) => {
   const q = searchParams?.q || ''
-  const users = await fetchUsers(q);
+  const page = searchParams?.page || 1
+  const { count, users } = await fetchUsers(q, Number(page));
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -68,7 +69,7 @@ const UsersPage = async ({ searchParams }: IUsersPage) => {
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count}/>
     </div>
   );
 };

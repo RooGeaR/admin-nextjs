@@ -16,6 +16,7 @@ const Search = ({placeholder}: SearchProps) => {
 
   const handleSearch = useDebouncedCallback((e: ChangeEvent<HTMLInputElement>) => {
     const params = new URLSearchParams(searchParams)
+    params.set('page', '1')
     const term = e.target.value
     if (term) {
       term.length > 2 && params.set('q', term);

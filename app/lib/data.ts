@@ -15,6 +15,16 @@ export const fetchUsers = async (q : string, page: number) => {
   }  
 }
 
+export const fetchUser = async (id: string) => {
+  try {
+    connectToDB()
+    const user = await User.findById(id)
+    return user
+  } catch (error) {
+    throw new Error("Failed to fetch user!")
+  }  
+}
+
 export const fetchProducts = async (q : string, page: number) => {
   const regex = new RegExp(q, 'i')
   const ITEMS_PER_PAGE = 2
@@ -26,5 +36,15 @@ export const fetchProducts = async (q : string, page: number) => {
     return { count, products }
   } catch (error) {
     throw new Error("Failed to fetch products!")
+  }  
+}
+
+export const fetchProduct = async (id: string) => {
+  try {
+    connectToDB()
+    const product = await User.findById(id)
+    return product
+  } catch (error) {
+    throw new Error("Failed to fetch product!")
   }  
 }

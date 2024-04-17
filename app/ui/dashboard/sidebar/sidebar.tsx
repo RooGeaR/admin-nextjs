@@ -15,7 +15,7 @@ import {
 } from "react-icons/md";
 import MenuLink from "./menuLink/menuLink";
 import Image from "next/image";
-import { signOut } from "@/app/auth";
+import { auth, signOut } from "@/app/auth";
 
 const menuItems: MenuItem[] = [
   {
@@ -79,13 +79,14 @@ const menuItems: MenuItem[] = [
     ],
   },
 ];
-const Sidebar = () => {
+const Sidebar = async () => {
+  const session = await auth()
   return (
     <div className={styles.container}>
       <div className={styles.user}>
-        <Image src="/noavatar.png" alt="" width={50} height={50} className={styles.userImage}/>
+        <Image src={session?.user.img || "/noavatar.png"} alt="" width={50} height={50} className={styles.userImage}/>
         <div className={styles.userDetail}>
-          <span className={styles.username}>Jonh Doe</span>
+          <span className={styles.username}>{session?.user.username}</span>
           <span className={styles.userTitle}>Administrator</span>
         </div>
       </div>

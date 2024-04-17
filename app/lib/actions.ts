@@ -6,6 +6,7 @@ import { connectToDB } from "./utils"
 import { redirect } from "next/navigation"
 import bcrypt from 'bcrypt'
 import { signIn } from "../auth"
+import { AuthError } from "next-auth";
 
 export const addUser = async (formData: FormData) => {
   const {username, email, password, phone, address, isAdmin, isActive} = Object.fromEntries(formData)
@@ -123,14 +124,20 @@ export const updateProduct = async (formData: FormData) => {
   }
 }
 
-export const authenticate = async (formData: FormData) => {
+export const authenticate = async (prevState: string | undefined | null, formData: FormData) => {
   const { username, password } = Object.fromEntries(formData)
 
   try {
     await signIn('credentials', { username, password })
   } catch (error) {
-    console.log(error)
-    throw error
-    
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return "Invalid credentials.";
+        default:
+          return "Something went wrong.";
+      }
+    }
+    throw error;
   }
 }
